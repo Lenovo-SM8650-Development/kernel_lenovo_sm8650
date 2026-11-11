@@ -49,6 +49,7 @@
 #include <linux/usb/composite.h>
 #include <linux/soc/qcom/wcd939x-i2c.h>
 #include <linux/usb/repeater.h>
+#include <asm/setup.h>
 
 #include "core.h"
 #include "gadget.h"
@@ -3781,7 +3782,7 @@ static void dwc3_dis_sleep_mode(struct dwc3_msm *mdwc)
 static void dwc3_force_gen1(struct dwc3_msm *mdwc)
 {
 	if (mdwc->force_gen1 && (mdwc->ip == DWC31_IP))
-		dwc3_msm_write_reg_field(mdwc->base, DWC3_LLUCTL, DWC3_LLUCTL_FORCE_GEN1, 1);
+		dwc3_msm_write_reg_field(mdwc->base, DWC3_LLUCTL(0), DWC3_LLUCTL_FORCE_GEN1, 1);
 }
 
 static int dwc3_msm_power_collapse_por(struct dwc3_msm *mdwc)

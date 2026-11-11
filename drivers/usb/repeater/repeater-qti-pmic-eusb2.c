@@ -207,7 +207,6 @@ static void eusb2_repeater_create_debugfs(struct eusb2_repeater *er)
 	er->usb2_slew = U8_MAX;
 	er->usb2_equ = U8_MAX;
 	er->usb2_preem = U8_MAX;
-	#endif
 	er->hs_comp_current = U8_MAX;
 	er->eusb_slew = U8_MAX;
 	er->eusb_equ = U8_MAX;

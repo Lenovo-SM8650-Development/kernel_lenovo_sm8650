@@ -3,13 +3,9 @@
 #
 
 # Each configuration option enables a list of files.
-ENV_VARIABLE_FILE := $(abspath ../../../../../../../../../../../../../env_variable.txt)
-HQ_TARGET_PRODUCT := $(shell grep "HQ_TARGET_PRODUCT" $(ENV_VARIABLE_FILE) | cut -d'=' -f2)
-$(info touch get HQ_TARGET_PRODUCT: $(HQ_TARGET_PRODUCT) from ENV_VARIABLE_FILE: $(ENV_VARIABLE_FILE))
-
-ifeq ($(HQ_TARGET_PRODUCT), $(filter $(HQ_TARGET_PRODUCT), kirby_row kirby_prc))
+ifeq ($(CONFIG_ARCH_KIRBY),y)
 EXTRA_CFLAGS += -DBUILD_KIRBY_TOUCH
-else ifeq ($(HQ_TARGET_PRODUCT), $(filter $(HQ_TARGET_PRODUCT), lapis_row lapis_prc))
+else ifeq ($(CONFIG_ARCH_LAPIS),y)
 EXTRA_CFLAGS += -DBUILD_LAPIS_TOUCH
 endif
 
